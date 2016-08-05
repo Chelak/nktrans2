@@ -12,6 +12,9 @@
 <c:set var="ctx" value="${pageContext['request'].contextPath}"/>
 <html>
 <body>
-<h1>Hello World - ${russian}</h1>
+<div class="container">
+    <h1>Hello World - ${russian}</h1>
+</div>
+
 </body>
 </html>

@@ -12,6 +12,7 @@ public class HomeController {
     @RequestMapping("/")
     public String helloWorld(Model model) {
         model.addAttribute("russian", "Добрый день");
-        return "hello-world";
+        model.addAttribute("pageContent", "content/hello-world");
+        return "hello";
     }
 }
