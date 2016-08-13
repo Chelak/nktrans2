@@ -16,8 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 /**
  * Created by scelac on 8/11/16.
  */
-@Configuration
-@EnableWebSecurity
+
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     @Qualifier("authenticationProvider")
