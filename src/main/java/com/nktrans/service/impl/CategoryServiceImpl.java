@@ -13,30 +13,27 @@ import java.util.List;
  * Created by scelac on 8/5/16.
  */
 @Service
+@Transactional
 public class CategoryServiceImpl implements CategoryService {
    @Autowired
    CategoryRepository categoryRepository;
 
     @Override
-    @Transactional
-    public Category findOne(Long categoryId) {
+     public Category findOne(Long categoryId) {
         return categoryRepository.findOne(categoryId);
     }
 
     @Override
-    @Transactional
     public List<Category> findAll() {
         return categoryRepository.findAll();
     }
 
     @Override
-    @Transactional
     public void save(Category category) {
-        categoryRepository.save(category);
+        categoryRepository.saveAndFlush(category);
     }
 
     @Override
-    @Transactional
     public void deleteById(Long categoryId) {
             categoryRepository.delete(categoryId);
     }

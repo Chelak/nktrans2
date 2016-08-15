@@ -3,7 +3,11 @@
     <h3>Add new category</h3>
 
     <form:form method="POST" action="/category/add-category" modelAttribute="category">
-        <table>
+        <table class="table">
+            <tr>
+                <td><form:label path="id">Id</form:label></td>
+                <td><form:input path="id"/></td>
+            </tr>
             <tr>
                 <td><form:label path="title">Category Title</form:label></td>
                 <td><form:input path="title"/></td>

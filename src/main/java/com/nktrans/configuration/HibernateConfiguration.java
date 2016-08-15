@@ -1,6 +1,7 @@
 package com.nktrans.configuration;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.ejb.HibernatePersistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -8,10 +9,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -34,7 +37,7 @@ public class HibernateConfiguration {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.nktrans.entity" });
+        sessionFactory.setPackagesToScan(new String[]{"com.nktrans.entity"});
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
@@ -62,17 +65,5 @@ public class HibernateConfiguration {
     @Bean
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
-    }
-
-//    @Bean
-//    @Autowired
-//    public HibernateTransactionManager transactionManager(SessionFactory s) {
-//        HibernateTransactionManager txManager = new HibernateTransactionManager();
-//        txManager.setSessionFactory(s);
-//        return txManager;
-//    }
-    @Bean
-    public PlatformTransactionManager transactionManager() throws IOException {
-        return new DataSourceTransactionManager(dataSource());
     }
 }

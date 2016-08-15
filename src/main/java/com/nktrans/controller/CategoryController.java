@@ -51,6 +51,6 @@ public class CategoryController {
 
         categoryService.save(category);
 
-        return "redirect:category";
+        return "redirect:/category";
     }
 }
