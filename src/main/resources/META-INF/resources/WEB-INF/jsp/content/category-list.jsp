@@ -14,6 +14,7 @@
            <td>${category.id}</td>
            <td>${category.title}</td>
            <td>${category.description}</td>
+           <td><button type="button" class="btn btn-primary" onclick="window.location.href='/category/${category.id}/edit'">Edit</button></td>
        </tr>
    </c:forEach>
 
